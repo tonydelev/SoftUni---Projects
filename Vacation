@@ -1,0 +1,77 @@
+using System;
+
+namespace _03.Vacation
+{
+    class Vacation
+    {
+        static void Main(string[] args)
+        {
+            int countOfPeople = int.Parse(Console.ReadLine());
+            string typeOfTheGgroup = Console.ReadLine();
+            string dayOfWeek = Console.ReadLine();
+
+            double totalPrice = 0;
+
+            switch (typeOfTheGgroup)
+            {
+                case "Students":
+                    switch (dayOfWeek)
+                    {
+                        case "Friday":
+                            totalPrice = countOfPeople * 8.45;
+                            break;
+                        case "Saturday":
+                            totalPrice = countOfPeople * 9.80;
+                            break;
+                        case "Sunday":
+                            totalPrice = countOfPeople * 10.46;
+                            break;
+                    }
+                    if (countOfPeople >= 30)
+                    {
+                        totalPrice -= totalPrice * 0.15;
+                    }
+                    break;
+                case "Business": //10.90	15.60	16
+                    switch (dayOfWeek)
+                    {
+                        case "Friday":
+                            totalPrice = countOfPeople * 10.90;
+                            break;
+                        case "Saturday":
+                            totalPrice = countOfPeople * 15.60;
+                            break;
+                        case "Sunday":
+                            totalPrice = countOfPeople * 16;
+                            break;
+                    }
+                    if (countOfPeople >= 100)
+                    {
+                        totalPrice -= (totalPrice / countOfPeople) * 10;
+                    }
+                    break;
+                case "Regular": //15	20	22.50
+                    switch (dayOfWeek)
+                    {
+                        case "Friday":
+                            totalPrice = countOfPeople * 15;
+                            break;
+                        case "Saturday":
+                            totalPrice = countOfPeople * 20;
+                            break;
+                        case "Sunday":
+                            totalPrice = countOfPeople * 22.50;
+                            break;
+                    }
+                    if (countOfPeople >= 10 && 20 >= countOfPeople)
+                    {
+                        totalPrice -= totalPrice * 0.05;
+                    }
+                    break;
+            }
+            
+            Console.WriteLine($"Total price: {totalPrice:f2}");
+
+        }
+    }
+}
