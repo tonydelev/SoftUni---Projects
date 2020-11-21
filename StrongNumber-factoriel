@@ -1,0 +1,41 @@
+using System;
+
+namespace _06.StrongNumber
+{
+    class StrongNumber
+    {
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());
+
+            int tempNum = num;
+            string numlenght = "";
+
+            numlenght += num;
+            int sum = 0;
+
+            for (int i = 1; i <= numlenght.Length; i++)
+            {
+                int currentDigit = tempNum % 10;
+                tempNum = (tempNum- currentDigit) / 10;
+                int factoriel = 1;
+                for (int j = 1; j <= currentDigit; j++)
+                {
+                    factoriel *= j;
+                }
+
+                sum += factoriel;
+            }
+
+            if (sum == num)
+            {
+                Console.WriteLine($"yes");
+            }
+            else
+            {
+                Console.WriteLine($"no");
+            }
+
+        }
+    }
+}
